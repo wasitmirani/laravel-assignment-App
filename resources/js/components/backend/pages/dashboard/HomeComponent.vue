@@ -15,21 +15,21 @@
                               <h6>{{item.title}} </h6></a>
                             <div class="blog-bottom-content">
                               <ul class="blog-social">
-                                <li>by: {{item.author.name}} 
+                                <li>by: {{item.author.name}}
                                 <a role="button" @click="updateBlog(item)"  v-if="item.author_id==authuser.id">
-                                <i class="fas fa-edit"></i></a>
+                                <i class="fas fa-edit text-primary"></i></a>
                                 <a role="button" @click="updateBlog(item)"  v-if="item.author_id!=authuser.id" v-can="'blog-edit'">
-                                <i class="fas fa-edit"></i></a>
+                                <i class="fas fa-edit text-primary"></i></a>
                                 </li>
-                                
+
                               </ul>
                               <hr>
                               <p class="mt-0">{{item.description}}</p>
 
-                             
-                             
+
+
                             </div>
-                                 
+
                           </div>
                         </div>
                       </div>
@@ -42,7 +42,7 @@
    </div>
  <vs-dialog blur   v-model="active_modal" width="50%">
          <template #header>
-          
+
             <h4 class="not-margin" >
                Update <b>{{blog.title}}</b> blog
             </h4>
@@ -62,7 +62,7 @@
                </div>
                <div class="flex">
                   <!-- <vs-checkbox v-model="checkbox1">Remember me</vs-checkbox> -->
-                 
+
                    <vs-button  color="rgb(59,222,200)" gradient  type="submit"  @click="onSubmit" >
                      Update
                   </vs-button>
@@ -92,9 +92,9 @@
 
             },
             onSubmit(){
-            
+
                 const url="/content/blog";
-               
+
                     let data={id:this.blog.id,title:this.blog.title,description:this.blog.description};
                     axios.put(url+"/"+this.blog.id,data).then((res)=>{
 
@@ -109,7 +109,7 @@
                     }
                     this.$root.alertNotificationMessage(err.response.status,err.response.data);
                 });
-            
+
 
             },
             resetForm(){
